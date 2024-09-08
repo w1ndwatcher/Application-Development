@@ -1,0 +1,62 @@
+{% extends "layout.html" %}{% block title %}Edit Post{% endblock %}
+{% block content %}
+<div class="row mt-3">
+    <div class="col-lg-2 col-xlg-2 col-md-2 col-sm-2"></div>
+    <div class="col-lg-8 col-xlg-8 col-md-8 col-sm-8">
+        <div class="card justify-content-center" style="border-color:#6366f1;">
+            <div class="card-header">
+                <h3 class="card-title text-center" style="color:#6366f1;">Edit Post</h3>
+            </div>
+            <form action="{{url_for('views.editpost',postid=post_id)}}" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-lg-6 col-xlg-6 col-md-6 col-sm-6">
+                            <div class="row mb-2">
+                                <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <div>
+                                            <input type="text" placeholder="Name" name="postname" class="form-control form-control-line" value="{{epost.post_title}}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Caption/Description</label>
+                                        <div>
+                                            <textarea type="text" placeholder="Tell us what you are thinking!" name="postdesc" class="form-control form-control-line" required>{{epost.post_caption}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xlg-6 col-md-6 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                                    <center><img src="{{url_for('static', filename=epost.post_image)}}" style="height: 100px;width: 100px;object-fit: contain;"></center>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Image Upload</label>
+                                        <div>
+                                            <input type="file" name="postimg" class="form-control form-control-line" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn" style="background-color:#6366f1;color: white;">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-2 col-xlg-2 col-md-2 col-sm-2"></div>
+</div>
+{% endblock %}

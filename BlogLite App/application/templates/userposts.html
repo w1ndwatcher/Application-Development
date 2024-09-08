@@ -1,0 +1,106 @@
+{% extends "layout.html" %}{% block title %}Add Post{% endblock %}
+{% block content %}
+<div class="row mt-3">
+    <div class="col-lg-4 col-xlg-4 col-md-4 col-sm-4">
+        <div class="card justify-content-center">
+            <div class="card-body">
+                <div class="row mt-2">
+                    <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12 ">
+                        <h4 class="text-center">{{suser.username}}'s Profile</h4>
+                    </div>
+                </div> 
+                <div class="row mt-3">
+                    <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                        <center><img src="{{url_for('static', filename=suser.profile_image)}}" style="height: 100px;width: 100px;object-fit: contain;"></center>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <p class="text-center">{{suser.username}}</p>
+                    <p class="text-muted text-center">{{suser.email}}</p>
+                </div>
+                {% if suser == current_user %}
+                <div class="row mt-2">
+                    <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                        <center><a class="btn" href="{{ url_for('views.editprofile', userid=suser.user_id) }}" style="background-color:#6366f1;color: white;"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger" href="{{ url_for('views.deleteuser', userid=suser.user_id) }}"><i class="fas fa-trash"></i></a></center>
+                    </div>
+                </div>
+                {% endif %}
+                <hr>
+                <div class="row" class="justify-content-center">
+                    <div class="col-lg-4 col-xlg-4 col-md-4 col-sm-4 justify-content-center" style="border-right: 1px solid lightgrey"> 
+                        <h6>Total Posts</h6>
+                        <p>{{ post_count }}</p>
+                    </div>
+                    <div class="col-lg-4 col-xlg-4 col-md-4 col-sm-4 justify-content-center" style="border-right: 1px solid lightgrey">
+                        <h6>Followers</h6>
+                        <p>{{ following_count }}</p>
+                    </div>
+                    <div class="col-lg-4 col-xlg-4 col-md-4 col-sm-4 justify-content-center" >
+                        <h6>Following</h6>
+                        <p>{{ followers_count }}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row mt-2">
+                    <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                        
+                        {% if not current_user.is_following(suser) %}
+                            <center><a href="{{ url_for('views.follow', username=suser.username) }}" class="btn" style="background-color:#6366f1;color: white;">Follow</a></center>
+                        {% else %}
+                            <center><a href="{{ url_for('views.unfollow', username=suser.username) }}" class="btn" style="outline-color:#6366f1; color: #6366f1;">Unfollow</a></center>
+                        {% endif %}
+                        
+                        <!--<a href="{{url_for('views.addblog')}}" class="btn btn-lg" style="background-color:#6366f1;color: white;">Add Post</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-xlg-8 col-md-8 col-sm-8">
+        {% for post in posts %}
+            <div class="row mt-3 mb-3">
+                <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                    <div class="card justify-content-center">
+                        <div class="card-header" style="background-color: {{post.color}};">
+                            <!--<a href="/posts/{{post.user.username}}">{{post.user.username}}</a>-->
+                            
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-10 col-xlg-10 col-md-10 col-sm-10">
+                                            <!--<a href="/posts/{{post.user.username}}">{{post.user.username}}</a>-->
+                                        </div>
+                                    
+                                        <div class="col-lg-2 col-xlg-2 col-md-2 col-sm-2">
+                                            {% if user.user_id == post.author %}
+                                            <a class="dropdown-item" href="/delete-post/{{post.post_id}}" style="color:#dc3545;">Delete</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div> 
+                        </div>
+                        <div class="card-body"><!--image and caption-->
+                        <div class="container">
+                            <div class="row">
+                            <div class="col-lg-8 col-xlg-8 col-md-8 col-sm-8">
+                                <h5>{{ post.post_title }}</h5>
+                            </div>
+                            <div class="col-lg-4 col-xlg-4 col-md-4 col-sm-4">
+                                <img src="{{url_for('static', filename=post.post_image)}}" style="height: 100px;width: 100px;object-fit: contain;">
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-lg-12 col-xlg-12 col-md-12 col-sm-12">
+                                <div class="card-text">{{ post.post_caption }}</div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="card-footer text-muted">{{post.posted_date}}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
