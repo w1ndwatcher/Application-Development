@@ -1,0 +1,116 @@
+.btn-primary{
+    color: #ffffff;
+    background-color: #963E97;
+    border-color: #963E97;
+}
+
+.btn-primary:active{
+    color: #ffffff;
+    background-color: #963E97;
+    border-color: #963E97;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background: linear-gradient(to right, #963E97, #301934);
+    /* background-color: #963E97; */
+    border-color: #963E97;
+}
+
+.btn-primary:focus {
+    color: #ffffff;
+    background: linear-gradient(to right, #963E97, #301934);
+    /* background-color: #963E97; */
+    border-color: #963E97;
+    outline: #963E97;
+    box-shadow: #301934;
+}
+
+.btn-outline-primary{
+    color: #963E97;
+    background-color: #ffffff;
+    border-color: #963E97;
+}
+.btn-outline-primary:hover {
+    color: #ffffff;
+    background: linear-gradient(to right, #963E97, #301934);
+    border-color: #963E97;
+}
+.form-check-input:focus {
+    border-color: #b34db4;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem #b15ab2
+}
+
+.form-check-input:checked {
+    background-color: #963E97;
+    border-color: #963E97;
+}
+
+.navbar-brand{
+    color: #ffffff;
+    background: linear-gradient(to right, #963E97, #301934);
+    border-color: #963E97;
+}
+
+.card-header{
+    background-color: #963E97;
+    border-color: #963E97;
+    color: #ffffff;
+}
+
+/* Rating */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label { 
+    color: #963E97;
+}
+
+.rating input:checked ~ label {
+    color: #963E97;
+}
+
+/* Dashboard */
+.rounded-border {
+    border: 2px solid #301934;
+    border-radius: 15px;
+}
+
+/* Sidebar */
+.link-dark{
+    color: #301934;
+}
+
+.link-dark:hover{
+    color: #ffffff;
+    background-color: #963E97;
+}
+
+.active{
+    color: #ffffff !important; 
+    background-color: #963E97 !important;
+}
+
+.back-link{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.back-link:hover{
+    color: #ffffff;
+    text-decoration: none;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activity Report - {{last_month}}</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <center><h4>LMS</h4></center>
+    <center><h3>Monthly Activity Report - {{last_month}}</h3></center>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Section</th>
+                <th>Book Name</th>
+                <th>Issued By</th>
+                <th>Issued On</th>
+                <th>Returned On</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in bwr %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ book.section_name }}</td>
+                <td>{{ book.book_name }}</td>
+                <td>{{ book.full_name }}</td>
+                <td>{{ book.issue_date }}</td>
+                <td>{{ book.returned_on }}</td>
+                <td>{{ book.rating }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
